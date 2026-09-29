@@ -125,7 +125,11 @@ saucedemo-playwright-cucumber/
 |---|---|---|---|
 | Login | Inicio de sesión exitoso con `standard_user` | Positivo | `@smoke` `@positivo` |
 | Login | Usuario bloqueado (`locked_out_user`) no puede iniciar sesión | Negativo | `@negativo` `@bloqueado` |
-| Login | Contraseña incorrecta | Negativo | `@negativo` `@credenciales-invalidas` |
+| Login | Contraseña incompleta | Negativo | `@negativo` `@contrasena-incorrecta` |
+| Login | Contraseña en mayúsculas | Negativo | `@negativo` `@contrasena-incorrecta` |
+| Login | Contraseña con caracteres adicionales | Negativo | `@negativo` `@contrasena-incorrecta` |
+| Login | Espacio en lugar de guion bajo | Negativo | `@negativo` `@contrasena-incorrecta` |
+| Login | Contraseña común | Negativo | `@negativo` `@contrasena-incorrecta` |
 | Login | Usuario inexistente | Negativo | `@negativo` `@credenciales-invalidas` |
 | Login | Usuario vacío | Negativo | `@negativo` `@credenciales-invalidas` |
 | Login | Contraseña vacía | Negativo | `@negativo` `@credenciales-invalidas` |
@@ -137,7 +141,7 @@ saucedemo-playwright-cucumber/
 | Checkout | Apellido vacío en datos de envío | Negativo | `@negativo` `@datos-envio-vacios` |
 | Checkout | Código postal vacío en datos de envío | Negativo | `@negativo` `@datos-envio-vacios` |
 
-**Total:** 13 escenarios (5 positivos, 8 negativos).
+**Total:** 17 escenarios (5 positivos, 12 negativos).
 
 ## Patrón de diseño: Page Object Model
 
