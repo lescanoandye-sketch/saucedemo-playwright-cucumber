@@ -81,13 +81,21 @@ SLOWMO=800 npm test
 
 ## Reportes y evidencias
 
-Al finalizar cada ejecución se genera un reporte HTML en:
+Cada ejecución genera evidencias en la carpeta `evidencias/`:
 
 ```
-reports/cucumber-report.html
+evidencias/
+├── capturas/                  # Captura final de cada escenario
+│   ├── login/
+│   ├── carrito/
+│   └── checkout/
+└── reporte-cucumber.html      # Reporte con captura de cada paso
 ```
 
-Si un escenario falla, se adjunta automáticamente una **captura de pantalla** en el reporte como evidencia.
+- **Reporte HTML:** muestra cada escenario con el resultado de sus pasos y una captura de pantalla después de cada paso.
+- **Capturas por escenario:** imagen final de cada escenario, con el resultado en el nombre del archivo (`PASSED_` o `FAILED_`).
+
+Las evidencias de la última ejecución están incluidas en el repositorio y se pueden revisar directamente en GitHub, en la carpeta [evidencias/capturas](evidencias/capturas).
 
 ## Estructura del proyecto
 
@@ -95,6 +103,7 @@ Si un escenario falla, se adjunta automáticamente una **captura de pantalla** e
 saucedemo-playwright-cucumber/
 ├── docs/
 │   └── INFORME_ESTRATEGIA.md  # Informe de estrategia de automatización
+├── evidencias/                # Capturas y reporte de la última ejecución
 ├── features/                  # Escenarios en Gherkin
 │   ├── login.feature
 │   ├── carrito.feature
@@ -115,7 +124,7 @@ saucedemo-playwright-cucumber/
 │   │   └── checkout.steps.ts
 │   └── support/               # Configuración de ejecución
 │       ├── world.ts           # Contexto compartido por escenario
-│       └── hooks.ts           # Apertura/cierre del navegador y evidencias
+│       └── hooks.ts           # Navegador, capturas y evidencias
 ├── cucumber.js                # Configuración de Cucumber
 ├── tsconfig.json              # Configuración de TypeScript
 └── package.json
@@ -139,14 +148,13 @@ saucedemo-playwright-cucumber/
 
 ### Ejemplo de Esquema del escenario
 
-Un único escenario que se ejecuta una vez por cada fila de la tabla `Ejemplos`, reemplazando `<clave>` y `<tipo>` por los valores de cada fila:
+Un único escenario que se ejecuta una vez por cada fila de la tabla `Ejemplos`, reemplazando `<clave>` y `<tipo>` por los valores de cada fila. El mensaje de error es la validación final:
 
 ```gherkin
 @negativo @contrasena-incorrecta
 Esquema del escenario: Inicio de sesión fallido con contraseña incorrecta - <tipo>
   Cuando inicia sesión con el usuario "standard_user" y la contraseña "<clave>"
   Entonces debería visualizar el mensaje de error "Epic sadface: Username and password do not match any user in this service"
-  Y debería permanecer en la página de inicio de sesión
 
   Ejemplos:
     | clave           | tipo                                   |

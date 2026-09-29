@@ -3,7 +3,7 @@ module.exports = {
     requireModule: ['ts-node/register'],
     require: ['src/support/**/*.ts', 'src/steps/**/*.ts'],
     paths: ['features/**/*.feature'],
-    format: ['progress-bar', 'html:reports/cucumber-report.html'],
+    format: ['progress-bar', 'html:evidencias/reporte-cucumber.html'],
     formatOptions: { snippetInterface: 'async-await' }
   }
 };
