@@ -17,3 +17,14 @@ Then('debería visualizar la página de productos', async function (this: Custom
   await expect(this.page).toHaveURL(/inventory\.html/);
   await expect(inventoryPage.title).toHaveText('Products');
 });
+
+Then('debería visualizar el mensaje de error {string}', async function (this: CustomWorld, mensaje: string) {
+  const loginPage = new LoginPage(this.page);
+  await expect(loginPage.errorMessage).toHaveText(mensaje);
+});
+
+Then('debería permanecer en la página de inicio de sesión', async function (this: CustomWorld) {
+  const loginPage = new LoginPage(this.page);
+  await expect(this.page).toHaveURL('https://www.saucedemo.com/');
+  await expect(loginPage.loginButton).toBeVisible();
+});
