@@ -3,6 +3,7 @@ import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
+import { obtenerClave } from '../data/usuarios';
 
 Given('que el usuario se encuentra en la página de inicio de sesión', async function (this: CustomWorld) {
   await new LoginPage(this.page).goto();
@@ -27,4 +28,11 @@ Then('debería permanecer en la página de inicio de sesión', async function (t
   const loginPage = new LoginPage(this.page);
   await expect(this.page).toHaveURL('https://www.saucedemo.com/');
   await expect(loginPage.loginButton).toBeVisible();
+});
+
+Given('que el usuario ha iniciado sesión como {string}', async function (this: CustomWorld, usuario: string) {
+  const loginPage = new LoginPage(this.page);
+  await loginPage.goto();
+  await loginPage.login(usuario, obtenerClave(usuario));
+  await expect(this.page).toHaveURL(/inventory\.html/);
 });
