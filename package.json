@@ -1,0 +1,28 @@
+{
+  "name": "saucedemo-playwright-cucumber",
+  "version": "1.0.0",
+  "description": "Reto automatizacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lescanoandye-sketch/saucedemo-playwright-cucumber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lescanoandye-sketch/saucedemo-playwright-cucumber/issues"
+  },
+  "homepage": "https://github.com/lescanoandye-sketch/saucedemo-playwright-cucumber#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "@types/node": "^26.6.3",
+    "playwright": "^1.63.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
