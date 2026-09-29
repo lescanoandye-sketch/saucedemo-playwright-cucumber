@@ -10,20 +10,21 @@ Característica: Proceso de compra
     Y agrega el producto "Sauce Labs Backpack" al carrito
     Y ingresa al carrito de compras
 
-  @smoke @e2e
+  @smoke @e2e @compra-exitosa
   Escenario: Completar la compra de un producto hasta la confirmación
     Cuando continúa al checkout
     Y ingresa sus datos de envío con nombre "Andy", apellido "Lescano" y código postal "15001"
     Y finaliza la compra
     Entonces debería visualizar el mensaje de confirmación "Thank you for your order!"
 
+  @positivo @resumen-compra
   Escenario: Visualizar el resumen de compra antes de finalizar
     Cuando continúa al checkout
     Y ingresa sus datos de envío con nombre "Andy", apellido "Lescano" y código postal "15001"
     Entonces debería visualizar el resumen de compra con el producto "Sauce Labs Backpack"
     Y el total de la compra debería ser "$32.39"
 
-  @negativo
+  @negativo @datos-envio-vacios
   Esquema del escenario: No se puede continuar el checkout - <caso>
     Cuando continúa al checkout
     Y ingresa sus datos de envío con nombre "<nombre>", apellido "<apellido>" y código postal "<codigo>"
